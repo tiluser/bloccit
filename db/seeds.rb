@@ -41,6 +41,19 @@ if cmt_fbt == nil
     )
 end
 
+post_index = 1
+last_index = Post.last.id
+while post_index <= last_index
+    post_fbt = Post.find(post_index)
+    post_fbt.title = "SPAM"
+    post_fbt.save
+    if post_index == 1
+        post_index +=4
+    else
+        post_index += 5
+    end
+end
+    
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
