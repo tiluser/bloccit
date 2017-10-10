@@ -2,9 +2,7 @@ require 'random_data'
 
 # Create posts
 50.times do
-    # #1
     Post.create!(
-        # #2
         title: RandomData.random_sentence,
         body: RandomData.random_paragraph
         )
@@ -15,7 +13,6 @@ posts = Post.all
 # #3
 100.times do
     Comment.create!(
-    # #4
     post: posts.sample,
     body: RandomData.random_paragraph
     )
@@ -53,7 +50,19 @@ while post_index <= last_index
         post_index += 5
     end
 end
+
+# Create advertisements
+50.times do
+    Advertisement.create!(
+        title: RandomData.random_sentence,
+        body: RandomData.random_paragraph,
+        price: RandomData.random_price
+        )
+end
+posts = Post.all
+advertisements = Advertisement.all
     
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
+puts "#{Advertisement.count} ads created"
