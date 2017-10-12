@@ -29,8 +29,14 @@ module RandomData
     end
     
     def self.random_price
-        prices = (10..100).to_a
+        prices = (10...100).to_a
         prices.shuffle!
         prices[0]
+    end
+    
+    def self.random_resolved
+        resolved_vals = [true, false]
+        resolved_vals.shuffle!
+        resolved_vals[0]
     end
 end

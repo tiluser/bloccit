@@ -1,0 +1,13 @@
+<h1>All Questions</h1>
+
+<% @questions.each do |question| %>
+    <div class="media">
+        <div class="media-body">
+            <h4 class="media-heading">
+                <%= link_to question.title, question %>
+                <%= check_box("tag", tag.id, {checked: question.resolved, disabled: true}) %>
+            </h4>
+        </div>
+    </div>
+    
+<% end %>

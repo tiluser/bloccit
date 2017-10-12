@@ -51,6 +51,8 @@ while post_index <= last_index
     end
 end
 
+posts = Post.all
+
 # Create advertisements
 50.times do
     Advertisement.create!(
@@ -59,10 +61,18 @@ end
         price: RandomData.random_price
         )
 end
-posts = Post.all
-advertisements = Advertisement.all
-    
+
+# Create questions
+50.times do
+    Question.create!(
+        title: RandomData.random_sentence,
+        body: RandomData.random_paragraph,
+        resolved: RandomData.random_resolved
+        )     
+end
+
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
 puts "#{Advertisement.count} ads created"
+puts "#{Question.count} questions created"

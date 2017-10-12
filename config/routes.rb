@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
-  # advertisements and posts are handled with resourceful routing.  
+  # questions, advertisements, and posts are handled with resourceful routing.  
+  
+  resources :questions
+  
   resources :advertisements
 
   resources :posts
-
+  
   get 'about' => 'welcome#about'  
   
   get 'contact' => 'welcome#contact' 
