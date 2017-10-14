@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'sponsored_posts/show'
+
+  get 'sponsored_posts/new'
+
+  get 'sponsored_posts/edit'
+
     # questions, advertisements, and posts are handled with resourceful routing.  
   
     resources :questions
@@ -7,8 +13,8 @@ Rails.application.routes.draw do
     resources :advertisements
   
     resources :topics do
-    # #34
         resources :posts, except: [:index]
+        resources :sponsored_posts, except: [:index]
     end
   
     get 'about' => 'welcome#about'  
