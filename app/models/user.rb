@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 # #2
+    before_save {  cap_name if name.present? }
     before_save { self.email = email.downcase if email.present? }
 
 # #3
@@ -15,4 +16,11 @@ class User < ApplicationRecord
               
 # #6
     has_secure_password
+
+    def cap_name
+        if self.name != nil
+            self.name = GenUtils.cap_name(self.name)
+        end
+    end
+
 end

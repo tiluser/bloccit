@@ -39,4 +39,5 @@ module RandomData
         resolved_vals.shuffle!
         resolved_vals[0]
     end
+    
 end
