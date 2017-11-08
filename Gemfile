@@ -34,3 +34,6 @@ gem 'rails-controller-testing'
 gem 'bootstrap-sass'
 
 gem 'jquery-turbolinks'
+
+# Used for encrypting User passwords
+gem 'bcrypt'
