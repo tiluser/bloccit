@@ -3,12 +3,21 @@ class UsersController < ApplicationController
         @user = User.new
     end
     
+    def confirm
+        @user = User.new
+        @user.name = params[:user][:name]
+        @user.email = params[:user][:email]
+        @user.password = params[:user][:password]
+        @user.password_confirmation = params[:user][:password_confirmation] 
+    end
+    
     def create
     # #9
          @user = User.new
-         @user.name = session[:name]
-         @user.email = session[:email]
-         @user.password = session[:password]
+         @user.name = params[:user][:name]
+         @user.email = params[:user][:email]
+         @user.password = params[:user][:password]
+         @user.password_confirmation = params[:user][:password_confirmation]         
 
         # #10
         if @user.save
@@ -18,16 +27,6 @@ class UsersController < ApplicationController
             flash.now[:alert] = "There was an error creating your account. Please try again."
             render :new
         end
-    end
-    
-    def confirm
-        @user = User.new
-        @user.name = session[:name]
-        @user.email = session[:email]
-        @user.password = session[:password]
-        session[:name] = params[:user][:name]
-        session[:email] = params[:user][:email]
-        session[:password] = params[:user][:password]
     end
     
     def nocreate
