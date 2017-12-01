@@ -3,7 +3,10 @@ class Post < ApplicationRecord
     belongs_to :user, optional: true
     has_many :comments, dependent: :destroy
     
-    default_scope { order('created at DESC') }
+    default_scope { order('created_at DESC') }
+    
+    scope :ordered_by_title, -> { order('title') }
+    scope :ordered_by_reverse_created_at, -> { order('created at') }
     
     validates :title, length: { minimum: 5 }, presence: true
     validates :body, length: { minimum: 20 }, presence: true
