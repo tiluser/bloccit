@@ -16,6 +16,13 @@ require 'random_data'
         password: 'helloworld',
         role:     'admin'        
     )
+    
+    User.create!(
+        name:     'Moderator User',
+        email:    'moderator@example.com',
+        password: 'helloworld',
+        role:     'moderator'        
+    )
 
 end
 
