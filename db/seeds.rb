@@ -70,6 +70,7 @@ posts = Post.all
 # #3
 100.times do
     Comment.create!(
+    user: users.sample,
     post: posts.sample,
     body: RandomData.random_paragraph
     )
@@ -96,7 +97,7 @@ cmt_fbt = Comment.find_by(body: "The body has special comment data")
 post_fbt = Post.find_by(title: 'This is the special post')
 if cmt_fbt == nil
     Comment.create!(
-# user: users[0],
+        user: users[0],
         post: post_fbt,
         body: "The body has special comment data"
     )

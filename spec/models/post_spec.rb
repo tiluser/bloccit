@@ -8,13 +8,10 @@ RSpec.describe Post, type: :model do
     
 
     let(:topic) { Topic.create!(name: name, description: description) }
-
-    # #1
     let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
-    
-    # #2
     let(:post) { topic.posts.create!(title: title, body: body, user: user) }
     
+    it { is_expected.to have_many(:comments) }    
     it { is_expected.to belong_to(:topic) }
     it { is_expected.to belong_to(:user) }
     
