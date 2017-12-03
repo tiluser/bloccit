@@ -11,27 +11,11 @@
     <div class="col-md-8">
         <p class="lead"><%= @topic.description %></p>
         <!-- #10 -->
-        <% @topic.posts.each do |post| %>
+        <%= render @topic.posts %>
+        <% @topic.sponsored_posts.each do |sponsored_post| %>
             <div class="media">
                 <div class="media-body">
                     <h4 class="media-heading">
-                        <!-- #39 -->
-                        <%= link_to post.title, topic_post_path(@topic, post) %>
-                    </h4>
-                    <!-- #40 -->
-                    <small>
-                        submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %> <br>
-                        <%= post.comments.count %> Comments
-                    </small>
-                </div>
-            </div>
-        <% end %>
-        </div>
-            <% @topic.sponsored_posts.each do |sponsored_post| %>
-            <div class="media">
-                <div class="media-body">
-                    <h4 class="media-heading">
-                        <!-- #39 -->
                         <%= link_to sponsored_post.title, topic_sponsored_post_path(@topic, sponsored_post) %>
                     </h4>
                     <small>
