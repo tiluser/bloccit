@@ -1,18 +1,33 @@
 require 'random_data'
-5.times do
+1.times do
+    User.create!(
+        name:    "Joseph M. O'Connor",
+        email:   "tiluser0@gmail.com",
+        password: "helloworld"
+    )
+    User.create!(
+        name:     'Member User',
+        email:    'member@example.com',
+        password: 'helloworld'
+    )
+    User.create!(
+        name:     'Admin User',
+        email:    'admin@example.com',
+        password: 'helloworld',
+        role:     'admin'        
+    )
+
+end
+
+4.times do
     User.create!(
         name:    RandomData.random_name,
         email:   RandomData.random_email,
         password: RandomData.random_sentence
     )
 end
-users = User.all
 
-i = 0
-5.times do 
-    print users[i].name
-    i +=1
-end
+users = User.all
 
 15.times do
     Topic.create!(
@@ -53,27 +68,28 @@ posts = Post.all
     )
 end
 
+user = users.first
+
+user.name = "Joseph M. O'Connor"
+user.email = "tiluser0@gmail.com"
+user.password = "helloworld"
+
 # Create special post
 post_fbt = Post.find_by(title: 'This is the special post')
 if post_fbt == nil
     Post.create!(
+        user: user,
         topic: topics[0],
         title: "This is the special post",
         body: "The body has special data"
     )
 end
 
-user = Users.first
-
-user.name = "Joseph M. O'Connor"
-user.email = "tiluser0@gmail.com"
-user.password = "helloworld"
-
 cmt_fbt = Comment.find_by(body: "The body has special comment data")
 post_fbt = Post.find_by(title: 'This is the special post')
 if cmt_fbt == nil
     Comment.create!(
-        user: user,
+# user: users[0],
         post: post_fbt,
         body: "The body has special comment data"
     )
@@ -116,7 +132,6 @@ cmt_fbt = Comment.find_by(body: "The body has special comment data")
 post_fbt = Post.find_by(title: 'This is the special post')
 if cmt_fbt == nil
     Comment.create!(
-        user: user,
         post: post_fbt,
         body: "The body has special comment data"
     )
