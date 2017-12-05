@@ -10,6 +10,7 @@ RSpec.describe Post, type: :model do
     let(:topic) { Topic.create!(name: name, description: description) }
     let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "helloworld") }
     let(:post) { topic.posts.create!(title: title, body: body, user: user) }
+    let(:self_voted_post) { topic.posts.create!(title: title, body: body, user: user) }
     
     it { is_expected.to have_many(:comments) }    
     it { is_expected.to have_many(:votes) }
@@ -34,6 +35,12 @@ RSpec.describe Post, type: :model do
         
         it "has a user email of user@bloccit.com" do
             expect(post.user.email).to eq("user@bloccit.com")
+        end
+    end
+    
+    describe "vote up on create" do
+        it "There should be one upvote on creation of the post" do
+            expect( self_voted_post.up_votes ).to eq(1)
         end
     end
     
