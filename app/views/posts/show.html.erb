@@ -32,7 +32,7 @@
        </div>
     <% end %>
     <div class="clol-md-4">
-        <h1>
+        <h3>
             <%= pluralize(@post.points, 'point') %>
             <div>
                 <small>
@@ -40,6 +40,9 @@
                     <%= pluralize(@post.down_votes, 'down vote') %>
                 </small>
             </div>
-        </h1>
+        </h3>
+        <% if current_user %>
+            <%= render partial: 'favorites/favorite', locals: { post: @post } %>
+        <% end %>
     </div>
 </div>
