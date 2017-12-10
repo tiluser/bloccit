@@ -37,4 +37,3 @@ gem 'jquery-turbolinks'
 
 # Used for encrypting User passwords
 gem 'bcrypt'
-gem 'sqlite3'
