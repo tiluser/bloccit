@@ -16,10 +16,12 @@ class PostsController < ApplicationController
         @topic = Topic.find(params[:topic_id])
         @post = @topic.posts.build(post_params)
         @post.user = current_user
-        
+        if @post.id == 1 || @post.id.to_i % 5
+            @post.title = "SPAM "
+        end    
+
         if @post.save
-            flash[:notice] = "Post was saved."
-            # #36
+            flash[:notice] = "Post #{@post.id} was saved."
             redirect_to [@topic, @post]
         else
             flash.now[:alert] = "There was an error saving the post. Please try again."
