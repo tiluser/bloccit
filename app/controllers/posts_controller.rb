@@ -16,9 +16,10 @@ class PostsController < ApplicationController
         @topic = Topic.find(params[:topic_id])
         @post = @topic.posts.build(post_params)
         @post.user = current_user
-        if @post.id == 1 || @post.id.to_i % 5
-            @post.title = "SPAM "
-        end    
+        # "Anti-spam" extension done in second part of checkpoint 31, not really useful, so we're commenting out.
+#        if @post.id == 1 || @post.id.to_i % 5
+#            @post.title = "SPAM "
+#        end    
 
         if @post.save
             flash[:notice] = "Post #{@post.id} was saved."
