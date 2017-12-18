@@ -49,4 +49,10 @@ module RandomData
         resolved_vals.shuffle!
         resolved_vals[0]
     end
+    
+    def self.random_value
+        value = (-1...1).to_a
+        value.shuffle!
+        value[0]
+    end
 end
