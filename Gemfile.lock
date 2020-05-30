@@ -108,7 +108,7 @@ GEM
       actioncable (= 5.1.4)
       actionmailer (= 5.1.4)
       actionpack (= 5.1.4)
-      actionview (= 5.1.4)
+      actionview (= 5.2.4.2)
       activejob (= 5.1.4)
       activemodel (= 5.1.4)
       activerecord (= 5.1.4)
